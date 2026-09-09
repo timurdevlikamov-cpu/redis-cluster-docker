@@ -14,19 +14,21 @@ cd redis-cluster-docker
 
 docker compose up -d
 
-docker exec -it redis-cluster-docker-redis-node-0-1 redis-cli --cluster create \
-redis-cluster-docker-redis-node-0-1:6379 \
-redis-cluster-docker-redis-node-1-1:6379 \
-redis-cluster-docker-redis-node-2-1:6379 \
-redis-cluster-docker-redis-node-3-1:6379 \
-redis-cluster-docker-redis-node-4-1:6379 \
-redis-cluster-docker-redis-node-5-1:6379 \
+docker exec -it redis-node-0 redis-cli --cluster create \
+redis-node-0:6379 \
+redis-node-1:6379 \
+redis-node-2:6379 \
+redis-node-3:6379 \
+redis-node-4:6379 \
+redis-node-5:6379 \
 --cluster-replicas 1
 ```
 
 ### Проверка статус кластера
 ```bash
-docker ps 
+docker ps
+
 docker exec -it redis-node-0 redis-cli cluster nodes
+
 docker exec -it redis-node-0 redis-cli cluster info
 ```
